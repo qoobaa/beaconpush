@@ -48,4 +48,4 @@ Beaconpush gem provides easy access to the {Beacon push service}[http://beaconpu
 
 == Copyright
 
-Copyright (c) 2009 Jakub Kuźma. Released on the MIT license (See LICENSE[http://github.com/qoobaa/beaconpush/raw/master/LICENSE] for details).
+Copyright (c) 2010 Jakub Kuźma. Released on the MIT license (See LICENSE[http://github.com/qoobaa/beaconpush/raw/master/LICENSE] for details).
