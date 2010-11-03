@@ -1,0 +1,51 @@
+= Beaconpush
+
+Beaconpush gem provides easy access to the {Beacon push service}[http://beaconpush.com/] from your application.
+
+== Usage
+
+  require "beaconpush"
+
+  # You may want to put these two lines inside of an initializer in
+  # your Rails application
+  Beaconpush.api_key = "ad819983"
+  Beaconpush.secret_key = "..."
+
+  # Beaconpush is ready to use now!
+
+  # Fetches the number of online users
+  Beaconpush.users_count
+  # => 2
+
+  # Checks if the user is online at the moment
+  Beaconpush.user_online?("alice")
+  # => false
+
+  # Sends the given message to the user
+  Beaconpush.user_message("bob", "Hello Bob!")
+
+  # Fetches the list of online users in the given channel
+  Beaconpush.channel_users("myfirstchannel")
+  # => ["bob"]
+
+  # Sends the given message to the channel
+  Beaconpush.channel_message("myfirstchannel", :message => "Channel message!", :severity => "important")
+
+  # Forces the user to disconnect
+  Beaconpush.user_logout("bob")
+
+  # You can also use multiple Beacon accounts in a single application
+  client1 = Beaconpush::Client.new(:api_key => "da10749525", :secret_key => "...")
+  client2 = Beaconpush::Client.new(:api_key => "bb19021573", :secret_key => "...")
+  client1.users_count
+  # => 0
+  client2.users_count
+  # => 4
+
+== Installation
+
+  gem install beaconpush
+
+== Copyright
+
+Copyright (c) 2009 Jakub Kuźma. Released on the MIT license (See LICENSE[http://github.com/qoobaa/beaconpush/raw/master/LICENSE] for details).
