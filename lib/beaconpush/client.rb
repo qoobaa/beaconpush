@@ -1,10 +1,10 @@
 module Beaconpush
   class Client
-    attr_accessor :api_key, :secret_key, :version, :host, :port
+    attr_accessor :key, :secret, :version, :host, :port
 
     def initialize(options)
-      self.api_key = options.fetch(:api_key, Beaconpush.api_key) || raise(ArgumentError, "No API key given")
-      self.secret_key = options.fetch(:secret_key, Beaconpush.secret_key) || raise(ArgumentError, "No secret key given")
+      self.key = options.fetch(:key, Beaconpush.key) || raise(ArgumentError, "No key given")
+      self.secret = options.fetch(:secret, Beaconpush.secret) || raise(ArgumentError, "No secret given")
       self.version = options.fetch(:version, Beaconpush.version) || raise(ArgumentError, "No API version given")
       self.host = options.fetch(:host, Beaconpush.host) || raise(ArgumentError, "No Beacon host given")
       self.port = options.fetch(:port, Beaconpush.port) || raise(ArgumentError, "No Beacon port given")
@@ -44,7 +44,7 @@ module Beaconpush
     end
 
     def request(method, command, body = nil)
-      path = "/api/#{version}/#{api_key}#{URI.encode(command)}"
+      path = "/api/#{version}/#{key}#{URI.encode(command)}"
 
       request = Net::HTTPGenericRequest.new(method.to_s.upcase, !!body, method.to_s.upcase != "HEAD", path)
 
@@ -53,7 +53,7 @@ module Beaconpush
         request.content_length = body.size
       end
 
-      request["X-Beacon-Secret-Key"] = secret_key
+      request["X-Beacon-Secret-Key"] = secret
 
       response = http.request(request)
 

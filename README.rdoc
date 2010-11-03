@@ -8,8 +8,8 @@ Beaconpush gem provides easy access to the {Beacon push service}[http://beaconpu
 
   # You may want to put these two lines inside of an initializer in
   # your Rails application
-  Beaconpush.api_key = "ad819983"
-  Beaconpush.secret_key = "..."
+  Beaconpush.key = "ad819983"
+  Beaconpush.secret = "..."
 
   # Beaconpush is ready to use now!
 
@@ -35,8 +35,8 @@ Beaconpush gem provides easy access to the {Beacon push service}[http://beaconpu
   Beaconpush.user_logout("bob")
 
   # You can also use multiple Beacon accounts in a single application
-  client1 = Beaconpush::Client.new(:api_key => "da10749525", :secret_key => "...")
-  client2 = Beaconpush::Client.new(:api_key => "bb19021573", :secret_key => "...")
+  client1 = Beaconpush::Client.new(:key => "da10749525", :secret => "...")
+  client2 = Beaconpush::Client.new(:key => "bb19021573", :secret => "...")
   client1.users_count
   # => 0
   client2.users_count
