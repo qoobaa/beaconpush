@@ -1,3 +1,5 @@
+require "net/http"
+
 module Beaconpush
   class Client
     attr_accessor :key, :secret, :version, :host, :port
